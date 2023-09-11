@@ -14,6 +14,11 @@ const ArrayOperations = () => {
     return arr;
   }
 
+  const handleGenerateArray = () => {
+    setArray(generateRandomArray());
+    setResult("");
+  };
+
   const handleMaxMin = () => {
     const max = Math.max(...array);
     const min = Math.min(...array);
@@ -46,15 +51,14 @@ const ArrayOperations = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 5,
-        m: 8,
+        gap: 3,
         maxWidth: 300,
       }}
     >
       <Typography variant="h4">Array Operations</Typography>
+      <Button onClick={handleGenerateArray}>Generate New Array</Button>
       <Box>
         <Typography variant="h6">Array Contents:</Typography>
-
         {JSON.stringify(array, null, 2)}
       </Box>
       <Button onClick={handleMaxMin}>Find Max and Min</Button>
@@ -63,7 +67,7 @@ const ArrayOperations = () => {
         type="number"
         value={userInput}
         onChange={(e) => setUserInput(e.target.value)}
-      />{" "}
+      />
       <Button onClick={handleCountOccurrences}>Count Occurrences</Button>
       <Typography variant="h6">{result}</Typography>
     </Box>
